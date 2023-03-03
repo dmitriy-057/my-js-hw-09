@@ -17,15 +17,14 @@ img {
   max-width: 100%;
 }
 
-button {
+.color-switcher-btn {
   width: 80px;
   height: 40px;
    background-color: rgba(255, 255, 255, 0.677);
-   color: rgb(73, 72, 72);
+   color: black;
    border-radius: 4px;
-   border: none;
+   border: 1px solid black;
    text-transform:uppercase;
-   
 }
 
 
