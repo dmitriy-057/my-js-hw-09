@@ -15,10 +15,10 @@ function createPromise(position,delay) {
 
       if (shouldResolve) {
         // Fulfill
-        resolve();
+        resolve({position,delay});
       } else {
         // Reject
-        reject();
+        reject({position,delay});
       };
 
     }, delay);
