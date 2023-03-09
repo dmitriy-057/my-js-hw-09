@@ -7,22 +7,23 @@ const refs = {
 
 
 function createPromise(position,delay) {
-  return new Promise((resolve, reject) => {
+  
+   return new Promise((resolve, reject) => {
+    setTimeout(() => {
     console.log('Promise pending');
 
-    setTimeout(() => {
       const shouldResolve = Math.random() > 0.3;
 
       if (shouldResolve) {
         // Fulfill
-        resolve({position,delay});
+       resolve({i:position,delay});
       } else {
         // Reject
-        reject({position,delay});
+        reject({i:position,delay});
       };
 
     }, delay);
-  })
+  } )
 };
 
 
@@ -38,30 +39,22 @@ function onFormSubmit(e) {
   let delay = Number(refs.delay.value);
   let step = Number(refs.step.value);
 
-  for (let i = 0; i < amount; i+=1) {
-    let position = amount[i];
-    createPromise(position,delay)
-    .then(({ position, delay }) => {
-      console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+ 
+  for (let i= 0; i < amount; i ++ ) {
+
+    createPromise(i+1, delay + i * step)
+      .then(({ i, delay }) => {
+      alert(`✅ Fulfilled promise ${i} in ${delay}ms`);
     })
-    .catch(({ position, delay }) => {
-      console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+    .catch(({ i, delay }) => {
+      alert(`❌ Rejected promise ${i} in ${delay}ms`);
     });
   }
  
 };
 
 
-// function delay(ms) {
-//   // ваш код
-// return new Promise((resolve, reject) => {
-//   setTimeout(() => {
-//     resolve()
-//   }, ms);
-// })
-// }
 
-// delay(3000).then(() => alert('выполнилось через 3 секунды'));
 
 
 
